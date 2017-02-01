@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="eggmoney_black">#333333</color>
+    <color name="eggmoney_dark_grey">#999999</color>
+    <color name="eggmoney_grey">#dddddd</color>
+    <color name="eggmoney_light_grey">#f4f4f4</color>
+    <color name="eggmoney_white">#ffffff</color>
+    <color name="eggmoney_gold">#ffdd60</color>
+    <color name="eggmoney_gold_sel">#ffb600</color>
+    <color name="eggmoney_orange">#e27c3e</color>
+</resources>

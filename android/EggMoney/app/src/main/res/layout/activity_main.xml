@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hansol.eggmoney.ui.MainActivity"
+    android:background="@color/eggmoney_white">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/llUnderBarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:orientation="horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tvTabPublic"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/main_tab_public"
+                android:textSize="13dp"
+                android:textColor="@drawable/selector_grey_black_text"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tvTabEmart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/main_tab_emart"
+                android:textSize="13dp"
+                android:textColor="@drawable/selector_grey_black_text"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tvTabHomeplus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/main_tab_homeplus"
+                android:textSize="13dp"
+                android:textColor="@drawable/selector_grey_black_text"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">EggMoney</string>
+
+    <string name="toast_backpressed">"\'뒤로\' 버튼을 한번 더 누르면 종료됩니다."</string>
+
+    <string name="result_none">조회 결과가 없습니다</string>
+
+    <string name="main_tab_public">공식</string>
+    <string name="main_tab_emart">이마트</string>
+    <string name="main_tab_homeplus">홈플러스</string>
+
+    <string name="public_retail">도매가</string>
+    <string name="public_wholesale">소매가</string>
+    <string name="public_customer">소비자가</string>
+</resources>
