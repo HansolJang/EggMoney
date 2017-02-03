@@ -1,22 +1,12 @@
 #-*- coding: utf-8 -*-
 import urllib
-import requests
-import re
-import pymysql.cursors
-from requests.auth import HTTPBasicAuth
+from util.format_util import utils
 from bs4 import BeautifulSoup
-from datetime import datetime
 from config.db_config import db_conn
 cursors = db_conn.cursor()
 import time
 
-def numberChange(str):
-    return re.sub('[^0-9]','',str)
-
-def euc2utf(str):
-    return unicode(str,'utf-8').encode('utf-8')
-
-def scrapying():
+def emart_scrapying():
     page = 0
     # while page <= 1:
     url = 'http://emart.ssg.com/category/listCategoryItem.ssg?dispCtgId=0006110143'
@@ -32,13 +22,12 @@ def scrapying():
         product_thumbnail = item.find('div', attrs={'class','thm'})
 
         sql = "INSERT INTO emart_egg_money (customer_price, date, product_title, product_thumb) VALUES (%s,now(),%s,%s)"
-        params = customer_price.text, product_title.text, product_thumbnail.img.get('src').replace('//', '')
+        params = utils.numberChange(customer_price.text), product_title.text, product_thumbnail.img.get('src').replace('//', '')
         cursors.execute(sql, (params))
         print(params)
         time.sleep(0.3)
         db_conn.commit()
 
-scrapying()
 
 
 
