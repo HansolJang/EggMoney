@@ -14,3 +14,7 @@ class utils:
     @staticmethod
     def euc2utf(str):
         return unicode(str, 'utf-8').encode('utf-8')
+
+    @staticmethod
+    def sub_str(str):
+        return str[4:7]
