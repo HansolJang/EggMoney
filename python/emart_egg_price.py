@@ -27,17 +27,28 @@ def emart_scrapying():
         if egg_exclude_list[0] not in str_product_title and egg_exclude_list[1] not in str_product_title and \
                         egg_exclude_list[2] not in str_product_title:
             str_product_title = product_title.get_text().encode("UTF-8").strip()
-            index =0
             for mark in egg_count_list:
-                index += 1
                 if mark in str_product_title:
                     unit_price = int(utils.numberChange(customer_price.text)) / int(mark)
-                    sql = "INSERT INTO emart_egg_money (customer_price, date, product_title, product_thumb, unit_price) VALUES (%s,now(),%s,%s,%s)"
-                    params = utils.numberChange(customer_price.text), product_title.text, product_thumbnail.img.get(
-                        'src').replace('//', ''), unit_price
-                    cursors.execute(sql, (params))
-                    print(params)
-                    time.sleep(0.3)
+                    select_sql = "SELECT count(*) from product where product_title=(%s)"
+                    cursors.execute(select_sql, str_product_title)
+                    row = cursors.fetchone()
+                    if row[0] == 1:
+                        select_pid_sql = "SELECT pid from product where product_title=(%s)"
+                        cursors.execute(select_pid_sql, str_product_title)
+                        pid_row = cursors.fetchone()
+                        print pid_row[0]
+                        if pid_row[0] > 0:
+                            price_sql = "INSERT INTO price (pid,customer_price, unit_price, create_date) VALUES (%s,%s,%s,now())"
+                            price_params = pid_row[0], utils.numberChange(customer_price.text), unit_price
+                            cursors.execute(price_sql, (price_params))
+                            print price_params
+                            time.sleep(0.5)
+                    # sql = "INSERT INTO product (sid, product_title, product_thumb, create_date) VALUES (2,%s,%s,now())"
+                    # params = str_product_title, product_thumbnail.img.get('src').replace('//', '')
+                    # cursors.execute(sql, (params))
+                    # print(params)
+                    # time.sleep(0.3)
                     db_conn.commit()
 
 
