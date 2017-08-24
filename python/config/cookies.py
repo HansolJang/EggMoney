@@ -3,6 +3,7 @@ from config import url
 import re
 
 
+
 def cookie_parse(set_cookie):
     return re.sub('[^ ]+(?=,),', '', set_cookie).replace('  ', ' ')
 

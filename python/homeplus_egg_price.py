@@ -17,7 +17,7 @@ def homeplus_scrapying():
     source = source_code.read()
     soup = BeautifulSoup(source, "lxml")
     container = soup.find('div', attrs={'class','samll-exwrap'})
-    lis = container.find_all('li')[4:]
+    lis = container.find_all('li')
 
     # print product_title[0].text, customer_price[0].text
     # print product_thumbnail[0].img.get('src').replace('//','') # 썸네일 파싱
@@ -51,16 +51,16 @@ def homeplus_scrapying():
                     cursors.execute(price_sql,(price_params))
                     print price_params
                     time.sleep(0.5)
-            # sql = "INSERT INTO product (sid, product_title, product_thumb, create_date) VALUES (1,%s,%s,now())"
-            # params = str_product_title, product_thumbnail.img.get('src').replace('//', '')
-            # cursors.execute(sql, (params))
-            # print(params)
-            # db_conn.insert_id()
-            # pid = cursors.lastrowid
-            # price_sql = "INSERT INTO price (pid,customer_price, unit_price, create_date) VALUES (%s,%s,%s,now())"
-            # price_params =  pid,utils.numberChange(customer_price.text), unit_price
-            # cursors.execute(price_sql,(price_params))
-            # print price_params
-            # time.sleep(0.5)
+            sql = "INSERT INTO product (sid, product_title, product_thumb, create_date) VALUES (1,%s,%s,now())"
+            params = str_product_title, product_thumbnail.img.get('src').replace('//', '')
+            cursors.execute(sql, (params))
+            print(params)
+            db_conn.insert_id()
+            pid = cursors.lastrowid
+            price_sql = "INSERT INTO price (pid,customer_price, unit_price, create_date) VALUES (%s,%s,%s,now())"
+            price_params =  pid,utils.numberChange(customer_price.text), unit_price
+            cursors.execute(price_sql,(price_params))
+            print price_params
+            time.sleep(1.0)
             db_conn.commit()
 
